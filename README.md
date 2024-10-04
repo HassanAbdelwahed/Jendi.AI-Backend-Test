@@ -53,4 +53,18 @@ curl -X GET "https://backendtest-latest-0yny.onrender.com/api/biomarkers?categor
 
 # Install Docker
 
-Check the official [Docker documentation](https://docs.docker.com/engine/) for information how to install Docker on your operating system. And then install Docker and supporting tools.
+1- Check the official [Docker documentation](https://docs.docker.com/engine/) for information how to install Docker on your operating system. And then install Docker and supporting tools.
+
+2- Pull image hassanabdelwahed/backendtest:latest from Docker Hub:
+```bash
+docker pull hassanabdelwahed/backendtest:latest
+```
+
+3- Run Container from Image
+```bash
+docker run -p 8080:8080 hassanabdelwahed/backendtest
+```
+4- test the Api from postman using Endpoint
+```bash
+http://localhost:8080/api/biomarkers?categories=sleep
+```
