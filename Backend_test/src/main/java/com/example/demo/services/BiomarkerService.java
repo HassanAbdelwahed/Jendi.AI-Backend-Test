@@ -3,6 +3,9 @@ package com.example.demo.services;
 import com.example.demo.DTOs.AccountTokenResponse;
 import com.example.demo.DTOs.Biomarker;
 import com.example.demo.helpers.Util;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
@@ -23,21 +26,21 @@ public class BiomarkerService {
     @Value("${client_secret}")
     private String clientSecret;
 
-    public ResponseEntity<List<Biomarker>> getBiomarkers(List<String> categories, List<String> types, String startDateTime, String endDateTime) {
+    public ResponseEntity<List<Biomarker>> getBiomarkers(List<String> categories, List<String> types, String startDateTime, String endDateTime) throws JsonProcessingException {
         AccountTokenResponse accountTokenResponse = Util.getAccountToken(clientId, clientSecret);
         if (accountTokenResponse == null || accountTokenResponse.getAccountToken() == null) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         String url = "https://sandbox-api.sahha.ai/api/v1/profile/biomarker/" + externalId;
 
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(url);
-        if (categories != null)
-            uriBuilder = uriBuilder.queryParam("categories", String.join(",", categories));
-        if (types != null)
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(url)
+                .queryParam("categories", String.join(",", categories));
+
+        if (types != null && !types.isEmpty())
             uriBuilder = uriBuilder.queryParam("types", String.join(",", types));
-        if (startDateTime != null)
+        if (startDateTime != null && !startDateTime.isEmpty())
             uriBuilder = uriBuilder.queryParam("startDateTime", startDateTime);
-        if (endDateTime != null)
+        if (endDateTime != null && !endDateTime.isEmpty())
             uriBuilder = uriBuilder.queryParam("endDateTime", endDateTime);
 
         RestTemplate restTemplate = new RestTemplate();
@@ -45,15 +48,15 @@ public class BiomarkerService {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.add("Authorization", "account " + accountTokenResponse.getAccountToken());
 
-        // Make the POST request
-        ResponseEntity<List<Biomarker>> response = restTemplate.exchange(
+        ResponseEntity<String> response = restTemplate.exchange(
                 uriBuilder.toUriString(),
                 HttpMethod.GET,
                 new HttpEntity<>(headers),
-                new ParameterizedTypeReference<List<Biomarker>>() {}
+                String.class
         );
-        System.out.println("getBioMarkers=>>>>>>>>>>>>>>>>>>>>>.");
-        System.out.println(response.getBody());
-        return new ResponseEntity<>(response.getBody(), HttpStatus.OK);
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Biomarker> biomarkers = objectMapper.readValue(response.getBody(), new TypeReference<List<Biomarker>>() {});
+
+        return new ResponseEntity<>(biomarkers, HttpStatus.OK);
     }
 }
