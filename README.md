@@ -69,7 +69,7 @@ docker run -p 8080:8080 hassanabdelwahed/backendtest
 ```bash
 http://localhost:8080/api/biomarkers?categories=sleep
 ```
-
+---
 ### Running Without Docker
 
 1- Setup
