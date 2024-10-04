@@ -1,20 +1,25 @@
 # Jendi.AI-Backend-Test
 
-## Documentation
+## Application Hosting
+The application is hosted on Render, but please note that the response time may be slow as it is running on a free trial environment.
+
+### Dockerized Version
+
+To make it easier to run locally, I have Dockerized the application and pushed it to Docker Hub.
+
 
 ---
 
-## API 
+## API Testing
 
-### To Test the API: 
-The application is hosted on Render. You can also run the server locally or using Docker.
+### Hosted Version:: 
 
 **Endpoint**:  
 `GET https://backendtest-latest-0yny.onrender.com/api/biomarkers`
 
 Use this endpoint to retrieve biomarker data from the API.
 
-### Parameters
+#### Parameters
 
 | Parameter       | Type                | Required | Description                                                                   |
 | --------------- | ------------------- | -------- | ----------------------------------------------------------------------------- |
@@ -23,7 +28,7 @@ Use this endpoint to retrieve biomarker data from the API.
 | `startDateTime` | string `<date-time>` | No       | The starting timestamp for the period over which the biomarker was calculated. |
 | `endDateTime`   | string `<date-time>` | No       | The ending timestamp for the specified period.                                 |
 
-### Example Request:
+#### Example Request:
 
 To make a request to the API, use the following example:
 
@@ -31,7 +36,7 @@ To make a request to the API, use the following example:
 curl -X GET "https://backendtest-latest-0yny.onrender.com/api/biomarkers?categories=sleep"
 ```
 
-## Response
+#### Example Response
 
 ```json
 [
@@ -51,30 +56,27 @@ curl -X GET "https://backendtest-latest-0yny.onrender.com/api/biomarkers?categor
 
 ## To run the Application locally:
 
-# Install Docker
-
-## To run the Application using Docker:
-
-# Install Docker
+### Docker (Recommended):
 
 1- Check the official [Docker documentation](https://docs.docker.com/engine/) for information how to install Docker on your operating system. And then install Docker and supporting tools.
 
-2- Pull image hassanabdelwahed/backendtest:latest from Docker Hub:
+2- Pull the Docker image from Docker Hub:
 ```bash
 docker pull hassanabdelwahed/backendtest:latest
 ```
 
-3- Run Container from Image
+3- Run the container
 ```bash
 docker run -p 8080:8080 hassanabdelwahed/backendtest
 ```
-4- test the Api from postman using Endpoint
+4- Test the API locally using Postman or curl:
 ```bash
 http://localhost:8080/api/biomarkers?categories=sleep
 ```
 
-## What You Need
+## Running Without Docker
 
+1- Setup
 To get started, you will need the following:
 
 - A favorite text editor or IDE
@@ -85,10 +87,17 @@ You can also import the code straight into your IDE:
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 ---
 
-# Clone the Project
-
-To clone this project, use the following Git command:
+2- Clone the repository:
 ```bash
-[git clone https://github.com/spring-guides/gs-spring-boot.git](https://github.com/HassanAbdelwahed/Jendi.AI-Backend-Test.git)
+https://github.com/HassanAbdelwahed/Jendi.AI-Backend-Test.git
+```
+3- Navigate to the project directory:
+```bash
+cd Jendi.AI-Backend-Test/Backend_test
+```
 
+3- Run the application:
 
+```bash
+mvn spring-boot:run
+```
