@@ -49,6 +49,10 @@ curl -X GET "https://backendtest-latest-0yny.onrender.com/api/biomarkers?categor
 ]
 ```
 
+## To run the Application locally:
+
+# Install Docker
+
 ## To run the Application using Docker:
 
 # Install Docker
@@ -68,3 +72,23 @@ docker run -p 8080:8080 hassanabdelwahed/backendtest
 ```bash
 http://localhost:8080/api/biomarkers?categories=sleep
 ```
+
+## What You Need
+
+To get started, you will need the following:
+
+- A favorite text editor or IDE
+- [Java 17](https://www.oracle.com/java/technologies/downloads/) or later
+- [Maven 3.5+](https://maven.apache.org/download.cgi)
+
+You can also import the code straight into your IDE:
+- [IntelliJ IDEA](https://www.jetbrains.com/idea/)
+---
+
+# Clone the Project
+
+To clone this project, use the following Git command:
+```bash
+[git clone https://github.com/spring-guides/gs-spring-boot.git](https://github.com/HassanAbdelwahed/Jendi.AI-Backend-Test.git)
+
+
