@@ -6,8 +6,6 @@ import com.example.demo.helpers.Util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -27,7 +25,7 @@ public class BiomarkerService {
 
         AccountTokenResponse accountTokenResponse = Util.getAccountToken(clientId, clientSecret);
         if (accountTokenResponse == null || accountTokenResponse.getAccountToken() == null) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.METHOD_NOT_ALLOWED);
         }
 
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(url);
