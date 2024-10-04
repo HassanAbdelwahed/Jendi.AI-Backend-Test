@@ -3,12 +3,8 @@
 ## Application Hosting
 The application is hosted on Render, but please note that the response time may be slow as it is running on a free trial environment.
 
-### Dockerized Version
-
+## Dockerized Version
 To make it easier to run locally, I have Dockerized the application and pushed it to Docker Hub.
-
-
----
 
 ## API Testing
 
@@ -74,7 +70,7 @@ docker run -p 8080:8080 hassanabdelwahed/backendtest
 http://localhost:8080/api/biomarkers?categories=sleep
 ```
 
-## Running Without Docker
+### Running Without Docker
 
 1- Setup
 To get started, you will need the following:
