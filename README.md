@@ -81,7 +81,6 @@ To get started, you will need the following:
 
 You can also import the code straight into your IDE:
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/)
----
 
 2- Clone the repository:
 ```bash
