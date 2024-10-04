@@ -13,4 +13,4 @@ This microservice provides access to various campaigns through the API. All API 
 To Test API:
 
 ```bash
-curl -H "Authorization: Bearer [YOUR_API_KEY]" https://your-api-url/api/campaigns/
+GET https://backendtest-latest-0yny.onrender.com/api/biomarkers
