@@ -11,7 +11,7 @@ To make it easier to run locally, I have Dockerized the application and pushed i
 ### Hosted Version:: 
 
 **Endpoint**:  
-`GET https://backendtest-latest-0yny.onrender.com/api/biomarkers`
+`GET https://backendtest-latest-6lf5.onrender.com/api/biomarkers?categories=sleep`
 
 Use this endpoint to retrieve biomarker data from the API.
 
@@ -29,7 +29,7 @@ Use this endpoint to retrieve biomarker data from the API.
 To make a request to the API, use the following example:
 
 ```bash
-curl -X GET "https://backendtest-latest-0yny.onrender.com/api/biomarkers?categories=sleep"
+curl -X GET https://backendtest-latest-6lf5.onrender.com/api/biomarkers?categories=sleep,activity&types=active_hours,sleep_start_time&startDateTime=2024-09-28T00:00:00&endDateTime=2024-09-28T23:59:59
 ```
 
 #### Example Response
@@ -67,7 +67,7 @@ docker run -p 8080:8080 hassanabdelwahed/backendtest
 ```
 4- Test the API locally using Postman or curl:
 ```bash
-http://localhost:8080/api/biomarkers?categories=sleep
+http://localhost:8080/api/biomarkers?categories=sleep,activity
 ```
 ---
 ### Running Without Docker
