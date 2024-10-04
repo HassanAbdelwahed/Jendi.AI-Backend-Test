@@ -22,14 +22,13 @@ public class BiomarkerService {
     public ResponseEntity<List<Biomarker>> getBiomarkers(List<String> categories, List<String> types, String startDateTime, String endDateTime) throws JsonProcessingException {
         String clientId = "XhobMe05wLBRpx1gsraL6m5a6AV2KGTp";
         String clientSecret = "N7BMIWPHA93Pf86gszSYLnkDJactjSZ2hGLNSxiClJM69WB48x5Zr0g3NQeMLCHz";
+        String externalId = "jdjcjcndncsjjrcnjjsaxnncjj";
+        String url = "https://sandbox-api.sahha.ai/api/v1/profile/biomarker/" + externalId;
 
         AccountTokenResponse accountTokenResponse = Util.getAccountToken(clientId, clientSecret);
         if (accountTokenResponse == null || accountTokenResponse.getAccountToken() == null) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-        String externalId = "jdjcjcndncsjjrcnjjsaxnncjj";
-        String url = "https://sandbox-api.sahha.ai/api/v1/profile/biomarker/" + externalId;
 
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromHttpUrl(url);
         for (String category : categories) {
