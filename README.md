@@ -47,3 +47,10 @@ curl -X GET "https://backendtest-latest-0yny.onrender.com/api/biomarkers?categor
         "endDateTime": "2024-09-28T17:59:59+00:00"
     }
 ]
+```
+
+## To run the Application using Docker:
+
+# Install Docker
+
+Check the official [Docker documentation](https://docs.docker.com/engine/) for information how to install Docker on your operating system. And then install Docker and supporting tools.
